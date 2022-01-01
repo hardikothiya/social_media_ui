@@ -1,5 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:social_media_ui/screens/home_screen.dart';
+import 'package:social_media_ui/widgets/custom_clipper.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -15,28 +16,31 @@ class _LoginScreenState extends State<LoginScreen> {
           height: MediaQuery.of(context).size.height,
           child: Column(
             children: [
-              Image(
-                height: MediaQuery.of(context).size.height / 2.5,
-                width: double.infinity,
-                fit: BoxFit.cover,
-                image: AssetImage('assets/images/login_background.jpg'),
+              ClipPath(
+                clipper: CurveClipper(),
+                child: Image(
+                  height: MediaQuery.of(context).size.height / 2.5,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                  image: AssetImage('assets/images/login_background.jpg'),
+                ),
               ),
-              Text(
+              const Text(
                 'FRENZY',
                 style: TextStyle(
+                    color: Colors.blue,
                     fontSize: 34,
                     fontWeight: FontWeight.bold,
-                    letterSpacing: 1.0),
+                    letterSpacing: 10.0),
               ),
               SizedBox(height: 10),
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20),
                 child: TextField(
-                  obscureText: true,
                   decoration: InputDecoration(
                     filled: true,
                     fillColor: Colors.white,
-                    labelText: 'Username',
+                    hintText: 'Username',
                     prefixIcon: const Icon(
                       Icons.account_box,
                       size: 30,
@@ -55,7 +59,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   decoration: InputDecoration(
                     filled: true,
                     fillColor: Colors.white,
-                    labelText: 'Username',
+                    hintText: 'Password',
                     prefixIcon: const Icon(
                       Icons.lock,
                       size: 30,
@@ -65,8 +69,55 @@ class _LoginScreenState extends State<LoginScreen> {
                       borderRadius: BorderRadius.circular(25.0),
                     ),
                   ),
+                  obscureText: true,
                 ),
               ),
+              SizedBox(height: 10),
+              GestureDetector(
+                onTap: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (_) => HomeScreen()),
+                  );
+                },
+                child: Container(
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.symmetric(horizontal: 60),
+                  height: 45,
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).primaryColor,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Text(
+                    'Login',
+                    style: TextStyle(
+                        fontSize: 22,
+                        color: Colors.white,
+                        fontWeight: FontWeight.w600,
+                        letterSpacing: 1.5),
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Align(
+                  alignment: FractionalOffset.bottomCenter,
+                  child: GestureDetector(
+                    onTap: () {},
+                    child: Container(
+                      height: 80,
+                      color: Theme.of(context).primaryColor,
+                      alignment: Alignment.center,
+                      child: const Text(
+                        'Sign UP',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 16),
+                      ),
+                    ),
+                  ),
+                ),
+              )
             ],
           ),
         ),
