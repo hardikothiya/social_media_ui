@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:social_media_ui/data/data.dart';
 import 'package:social_media_ui/models/post_model.dart';
+import 'package:social_media_ui/models/user_model.dart';
 
 class PageCarousel extends StatelessWidget {
   final PageController pageController;
@@ -13,42 +14,40 @@ class PageCarousel extends StatelessWidget {
 
   _buildPost(BuildContext context, int index) {
     Post post = posts[index];
+    User user = users[index];
     return Stack(
       children: [
         Container(
           margin: EdgeInsets.all(10),
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15),
-            boxShadow: [
-              BoxShadow(
-                  color: Colors.black26, offset: Offset(0, 2), blurRadius: 6)
-            ],
-          ),
+              borderRadius: BorderRadius.circular(15),
+              boxShadow: const [
+                BoxShadow(
+                    color: Colors.black26, offset: Offset(0, 2), blurRadius: 6)
+              ]),
           height: 400,
           child: ClipRRect(
-            borderRadius: BorderRadius.circular(15.0),
+            borderRadius: BorderRadius.circular(15),
             child: Image(
-              height: 400,
-              width: 300,
-              image: AssetImage(post.imageUrl),
+              image: AssetImage(
+                post.imageUrl,
+              ),
               fit: BoxFit.cover,
             ),
           ),
         ),
-        Positioned(
-          left: 0.0,
-          bottom: 0.0,
-          right: 0.0,
+        Align(
+          alignment: Alignment.bottomCenter,
           child: Container(
-            padding: EdgeInsets.all(12),
-            height: 110,
+            height: 100,
+            margin: EdgeInsets.all(10),
             decoration: BoxDecoration(
-              color: Colors.indigo,
+              color: Colors.white30,
               borderRadius: BorderRadius.only(
-                bottomRight: Radius.circular(15),
-                bottomLeft: Radius.circular(15),
-              ),
+                  bottomLeft: Radius.circular(15),
+                  bottomRight: Radius.circular(15)),
             ),
+            child: Row(),
           ),
         )
       ],
