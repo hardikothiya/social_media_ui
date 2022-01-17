@@ -18,12 +18,38 @@ class PageCarousel extends StatelessWidget {
         Container(
           margin: EdgeInsets.all(10),
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15),
-              boxShadow: [
-                BoxShadow(
-                    color: Colors.black26, offset: Offset(0, 2), blurRadius: 6)
-              ]),
+            borderRadius: BorderRadius.circular(15),
+            boxShadow: [
+              BoxShadow(
+                  color: Colors.black26, offset: Offset(0, 2), blurRadius: 6)
+            ],
+          ),
           height: 400,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(15.0),
+            child: Image(
+              height: 400,
+              width: 300,
+              image: AssetImage(post.imageUrl),
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+        Positioned(
+          left: 0.0,
+          bottom: 0.0,
+          right: 0.0,
+          child: Container(
+            padding: EdgeInsets.all(12),
+            height: 110,
+            decoration: BoxDecoration(
+              color: Colors.indigo,
+              borderRadius: BorderRadius.only(
+                bottomRight: Radius.circular(15),
+                bottomLeft: Radius.circular(15),
+              ),
+            ),
+          ),
         )
       ],
     );
