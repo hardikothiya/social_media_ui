@@ -3,16 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:social_media_ui/data/data.dart';
 import 'package:social_media_ui/screens/home_screen.dart';
 import 'package:social_media_ui/screens/login_screen.dart';
+import 'package:social_media_ui/screens/profile_screen.dart';
 
 class CustomDrawer extends StatelessWidget {
-  _buildDrawerOption(Icon icon, String title, Function onTap) {
+  _buildDrawerOption(Icon icon, String title, Function() onTap) {
     return ListTile(
       leading: icon,
       title: Text(
         title,
         style: const TextStyle(fontSize: 18),
       ),
-      onTap: () {},
+      onTap: onTap,
     );
   }
 
@@ -68,7 +69,10 @@ class CustomDrawer extends StatelessWidget {
           _buildDrawerOption(const Icon(Icons.chat), 'Chat', () {}),
           _buildDrawerOption(const Icon(Icons.location_on), 'Location', () {}),
           _buildDrawerOption(
-              const Icon(Icons.account_circle), 'Profile', () {}),
+              const Icon(Icons.account_circle),
+              'Profile',
+              () => Navigator.push(
+                  context, MaterialPageRoute(builder: (_) => ProfileScreen()))),
           _buildDrawerOption(const Icon(Icons.settings), 'Setting', () {}),
           Expanded(
             child: Align(
