@@ -4,17 +4,16 @@ import 'package:social_media_ui/data/data.dart';
 import 'package:social_media_ui/models/post_model.dart';
 import 'package:social_media_ui/models/user_model.dart';
 
-class PageCarousel extends StatelessWidget {
+class PostCarousel extends StatelessWidget {
   final PageController pageController;
   final String title;
   final List<Post> post;
 
-  PageCarousel(
+  PostCarousel(
       {required this.pageController, required this.title, required this.post});
 
   _buildPost(BuildContext context, int index) {
     Post post = posts[index];
-    User user = users[index];
     return AnimatedBuilder(
       animation: pageController,
       builder: (BuildContext context, Widget? widget) {
@@ -57,7 +56,7 @@ class PageCarousel extends StatelessWidget {
             alignment: Alignment.bottomCenter,
             child: Container(
               height: 100,
-              margin: EdgeInsets.all(10),
+              margin: const EdgeInsets.all(10),
               decoration: const BoxDecoration(
                 color: Colors.white30,
                 borderRadius: BorderRadius.only(
@@ -78,7 +77,7 @@ class PageCarousel extends StatelessWidget {
                     SizedBox(width: 4),
                     Text(
                       post.location,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w600,
                       ),
@@ -97,7 +96,7 @@ class PageCarousel extends StatelessWidget {
                           children: [
                             Icon(Icons.comment,
                                 color: Theme.of(context).primaryColor),
-                            SizedBox(width: 4),
+                            const SizedBox(width: 4),
                             Text(post.comments.toString())
                           ],
                         )

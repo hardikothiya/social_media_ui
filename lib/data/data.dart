@@ -99,7 +99,7 @@ final users = [
   User(
       profileImageUrl: 'assets/images/user0.jpg',
       favorites: [],
-      posts: [],
+      posts: _yourPosts,
       backgroundImageUrl: '',
       followers: 511,
       following: 52,
@@ -107,7 +107,7 @@ final users = [
   User(
       profileImageUrl: 'assets/images/user1.jpg',
       favorites: [],
-      posts: [],
+      posts: _yourPosts,
       backgroundImageUrl: '',
       followers: 52,
       following: 5,
@@ -115,7 +115,7 @@ final users = [
   User(
       profileImageUrl: 'assets/images/user2.jpg',
       favorites: [],
-      posts: [],
+      posts: _yourPosts,
       backgroundImageUrl: '',
       followers: 544,
       following: 522,
@@ -123,7 +123,7 @@ final users = [
   User(
       profileImageUrl: 'assets/images/user3.jpg',
       favorites: [],
-      posts: [],
+      posts: _yourPosts,
       backgroundImageUrl: '',
       followers: 145,
       following: 51,
@@ -131,7 +131,7 @@ final users = [
   User(
       profileImageUrl: 'assets/images/user4.jpg',
       favorites: [],
-      posts: [],
+      posts: _yourPosts,
       backgroundImageUrl: '',
       followers: 514,
       following: 145,
@@ -139,7 +139,7 @@ final users = [
   User(
       profileImageUrl: 'assets/images/user5.jpg',
       favorites: [],
-      posts: [],
+      posts: _yourPosts,
       backgroundImageUrl: '',
       followers: 514,
       following: 51,
@@ -147,14 +147,14 @@ final users = [
   User(
       profileImageUrl: 'assets/images/user6.jpg',
       favorites: [],
-      posts: [],
+      posts: _yourPosts,
       backgroundImageUrl: '',
       followers: 45,
       following: 54,
       name: ''),
 ];
-final _yourPosts = [_post1, _post3, _post5];
-final _yourFavorites = [_post0, _post2, _post4];
+final _yourPosts = [_post3, _post5, _post5, _post5];
+final _yourFavorites = [_post0, _post2, _post4, _post4];
 
 // Current User
 final User currentUser = User(

@@ -5,7 +5,7 @@ import 'package:social_media_ui/data/data.dart';
 import 'package:social_media_ui/models/user_model.dart';
 import 'package:social_media_ui/widgets/custom_drawer.dart';
 import 'package:social_media_ui/widgets/following_users.dart';
-import 'package:social_media_ui/widgets/page_carousel.dart';
+import 'package:social_media_ui/widgets/post_carousel.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -65,7 +65,7 @@ class _HomeScreenState extends State<HomeScreen>
         body: ListView(
           children: [
             FollowingUsers(),
-            PageCarousel(
+            PostCarousel(
               pageController: _pageController,
               title: 'Posts',
               post: posts,

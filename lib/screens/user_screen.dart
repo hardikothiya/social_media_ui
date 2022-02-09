@@ -2,29 +2,25 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:social_media_ui/data/data.dart';
 import 'package:social_media_ui/models/user_model.dart';
+import 'package:social_media_ui/screens/profile_screen.dart';
 import 'package:social_media_ui/widgets/custom_drawer.dart';
 import 'package:social_media_ui/widgets/post_carousel.dart';
 import 'package:social_media_ui/widgets/profile_clipper.dart';
 
-class ProfileScreen extends StatefulWidget {
+class UserScreen extends StatefulWidget {
   final User user;
-  ProfileScreen({required this.user});
+  UserScreen({required this.user});
 
   @override
-  State<ProfileScreen> createState() => _ProfileScreenState();
+  _UserScreenState createState() => _UserScreenState();
 }
 
-class _ProfileScreenState extends State<ProfileScreen> {
+class _UserScreenState extends State<UserScreen> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  late PageController _favouritesPageController;
-  late PageController _postsPageController;
-
+  late PageController _postPageController;
   @override
   void initState() {
-    _favouritesPageController =
-        PageController(initialPage: 0, viewportFraction: 0.8);
-    _postsPageController =
-        PageController(initialPage: 0, viewportFraction: 0.8);
+    _postPageController = PageController(initialPage: 0, viewportFraction: 0.8);
     super.initState();
   }
 
@@ -42,7 +38,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ClipPath(
                   clipper: ProfileClipper(),
                   child: Image(
-                    image: AssetImage(widget.user.backgroundImageUrl),
+                    image: AssetImage(widget.user.profileImageUrl),
                     height: 300,
                     fit: BoxFit.cover,
                     width: double.infinity,
@@ -79,7 +75,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 )
               ],
             ),
-            SizedBox(height: 3),
+            const SizedBox(height: 3),
             Text(
               widget.user.name,
               style: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
@@ -124,19 +120,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ],
               ),
             ),
-            const SizedBox(
-              height: 10,
-            ),
             PostCarousel(
-              pageController: _postsPageController,
+              pageController: _postPageController,
               title: 'Your Posts',
               post: widget.user.posts,
             ),
-            PostCarousel(
-                pageController: _favouritesPageController,
-                title: 'Favorites',
-                post: widget.user.favorites),
-            const SizedBox(height: 30),
           ],
         ),
       ),

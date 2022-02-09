@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:social_media_ui/data/data.dart';
+import 'package:social_media_ui/models/user_model.dart';
 import 'package:social_media_ui/screens/home_screen.dart';
 import 'package:social_media_ui/screens/login_screen.dart';
 import 'package:social_media_ui/screens/profile_screen.dart';
@@ -47,7 +48,7 @@ class CustomDrawer extends StatelessWidget {
                             color: Theme.of(context).primaryColor, width: 3),
                       ),
                     ),
-                    SizedBox(width: 5),
+                    const SizedBox(width: 5),
                     Text(
                       currentUser.name,
                       style: const TextStyle(
@@ -72,7 +73,11 @@ class CustomDrawer extends StatelessWidget {
               const Icon(Icons.account_circle),
               'Profile',
               () => Navigator.push(
-                  context, MaterialPageRoute(builder: (_) => ProfileScreen()))),
+                  context,
+                  MaterialPageRoute(
+                      builder: (_) => ProfileScreen(
+                            user: currentUser,
+                          )))),
           _buildDrawerOption(const Icon(Icons.settings), 'Setting', () {}),
           Expanded(
             child: Align(

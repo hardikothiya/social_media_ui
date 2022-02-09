@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:social_media_ui/data/data.dart';
 import 'package:social_media_ui/models/user_model.dart';
+import 'package:social_media_ui/screens/user_screen.dart';
 
 class FollowingUsers extends StatefulWidget {
   @override
@@ -31,7 +32,11 @@ class _FollowingUsersState extends State<FollowingUsers> {
               itemBuilder: (BuildContext context, int index) {
                 User user = users[index];
                 return GestureDetector(
-                  onTap: () {},
+                  onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => UserScreen(user: user),
+                      )),
                   child: Container(
                     margin: EdgeInsets.all(10),
                     width: 60,
